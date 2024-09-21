@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { getResults } from "../controllers/result.controller";
 
-class HomeRoutes {
+class ResultRoutes {
   router = Router();
 
   constructor() {
@@ -9,8 +9,8 @@ class HomeRoutes {
   }
 
   intializeRoutes() {
-    this.router.get("/", getResults);
+    this.router.get("/quizzes/:quizId", getResults);
   }
 }
 
-export default new HomeRoutes().router;
+export default new ResultRoutes().router;

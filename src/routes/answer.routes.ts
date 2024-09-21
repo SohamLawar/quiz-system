@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { submitAnswer } from "../controllers/answer.controller";
 
-class HomeRoutes {
+class AnswerRoutes {
   router = Router();
 
   constructor() {
@@ -13,4 +13,4 @@ class HomeRoutes {
   }
 }
 
-export default new HomeRoutes().router;
+export default new AnswerRoutes().router;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createQuiz, getQuiz } from "../controllers/quiz.controller";
 
-class HomeRoutes {
+class QuizRoutes {
   router = Router();
 
   constructor() {
@@ -14,4 +14,4 @@ class HomeRoutes {
   }
 }
 
-export default new HomeRoutes().router;
+export default new QuizRoutes().router;

@@ -35,7 +35,7 @@ export function createQuiz(req: Request, res: Response): Response {
     quizzes.push(newQuiz);
     return res.status(201).json({
       message: "create OK",
-      reqBody: req.body
+      reqBody: newQuiz.id
     });
   } catch (err) {
     return res.status(500).json({

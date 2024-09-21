@@ -22,12 +22,13 @@ let newQuiz: Quiz = {
 quizzes.push(newQuiz);
 let results: Result[] = [];
 // assume userId for now, this is expected to come from after we decode JWT token information
-let userId: number = 1;
+const userId: number = 1;
 // Request body should contain quizId, questionId, selectedOption
 // add input validation layer
 export function submitAnswer(req: Request, res: Response): Response {
   try {
-    const { userId, quizId, questionId, selectedOption } = req.body;
+    // retrieve userId from authorization middleware
+    const { quizId, questionId, selectedOption } = req.body;
 
     // Find the quiz
     const quiz = quizzes.find(q => q.id === parseInt(quizId));
@@ -42,7 +43,7 @@ export function submitAnswer(req: Request, res: Response): Response {
     }
 
     // Find or create the quiz result for the user
-    const quizResult = results.find(r => r.quizId === parseInt(quizId) && r.userId === parseInt(userId));
+    const quizResult = results.find(r => r.quizId === parseInt(quizId) && r.userId === userId);
 
     // Check if the question has already been answered
     const quizAnswered = quizResult?.answers.find(a => a.questionId === parseInt(questionId));
@@ -64,7 +65,7 @@ export function submitAnswer(req: Request, res: Response): Response {
     } else {
       // Create a new result for the user and quiz
       let result: Result = {
-        userId: parseInt(userId),
+        userId: userId,
         quizId: parseInt(quizId),
         score: isCorrect ? 1 : 0,
         answers: [{
