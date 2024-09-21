@@ -12,3 +12,13 @@
 Our application exposes a RESTful API that allows users to interact with the system. All interactions are authenticated using JWT tokens, and sensitive operations require valid tokens.
 
 ### 6. Future Enhancements
+
+## Project setup
+```
+npm install
+```
+
+### Run
+```
+npm run start
+```
